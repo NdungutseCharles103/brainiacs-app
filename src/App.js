@@ -4,14 +4,17 @@ import Form from "./components/Form";
 import TodoApp from './ToDo';
 
 function App() {
-    const [inputType, setInputText] = useState("");
+    const [inputText, setInputText] = useState("");
+    const [todos, setTodos] = useState([]);
     return(
         <div className="App">
             <header>
                 <h1>Todo List</h1>
             </header>
-            <Form/>
-            <TodoApp />
+            <Form inputText={inputText}
+             todos={todos} setTodos={setTodos}
+              setInputText={setInputText}/>
+            <TodoApp todos={todos} setTodos={setTodos} />
         </div>
     )
 } 

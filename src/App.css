@@ -26,7 +26,7 @@ body {
   form input,
   form button {
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.2rem;
     border: none;
     background: white;
   }
@@ -62,7 +62,7 @@ body {
     transition: all 1s ease;
   }
   .filter-todo {
-    padding: 1rem;
+    padding: 0.8rem;
   }
   .todo li {
     flex: 1;
@@ -129,7 +129,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1rem;
+    padding: 0.7rem;
     background: #ff6f47;
     cursor: pointer;
     pointer-events: none;
