@@ -13,6 +13,7 @@ function App() {
     //use effect
     useEffect(() => {
         filterHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [todos, status]);
     //function
     const filterHandler = () => {
