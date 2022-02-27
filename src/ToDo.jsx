@@ -1,13 +1,12 @@
 import React from "react";
 import TodoComp from "./TodoComp";
 
-import "./App.css";
 
-function todoApp({ todos, setTodos }) {
+function todoApp({ todos, setTodos, filteredTodos }) {
   return (
     <div className="main-cont">
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoComp
             setTodos={setTodos}
             todos={todos}

@@ -10,25 +10,44 @@ function App() {
     const [todos, setTodos] = useState([]);
     const [status, setStatus] = useState("all");
     const [filteredTodos, setFilteredTodos] = useState([]);
+    
+    useEffect(() => {
+        getLocalTodos();
+    }, []);
+    
     //use effect
     useEffect(() => {
         filterHandler();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [todos, status]);
+        saveLocalTodos();
+    }, [todos, status]); 
     //function
     const filterHandler = () => {
         switch (status) {
             case 'completed':
-                setFilteredTodos(todos.filter(todo => todo.completed === true));
+                setFilteredTodos(todos.filter((todo) => todo.completed === true));
                 break;
             case 'uncompleted': 
-            setFilteredTodos(todos.filter(todo => todo.completed === false));
+            setFilteredTodos(todos.filter((todo) => todo.completed === false));
                 break;
             default:
                 setFilteredTodos(todos);
                 break;    
         }
     }
+
+    const saveLocalTodos = () => {
+            localStorage.setItem("todos", JSON.stringify(todos));
+    
+    }
+    const getLocalTodos = () => {
+        if (localStorage.getItem("todos") === null) {
+            localStorage.setItem("todos", JSON.stringify([]));
+        }else{
+          let localTodo =  JSON.parse(localStorage.getItem("todos"));
+          setTodos(localTodo);
+        }
+    }
+
     return(
         <div className="App">
             <header>
@@ -37,8 +56,9 @@ function App() {
             <Form inputText={inputText}
              todos={todos} setTodos={setTodos}
               setInputText={setInputText}
-              setStatus={setStatus}/>
-            <TodoApp todos={todos} setTodos={setTodos} />
+              setStatus={setStatus}
+              />
+            <TodoApp filteredTodos={filteredTodos} setTodos={setTodos} todos={todos} />
         </div>
     )
 } 
